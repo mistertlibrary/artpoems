@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Poem to Art: Workshop Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet"/>
+  <style>
+    /* ===== SCOPED TO #workshop-guide ONLY ===== */
+    #workshop-guide *,
+    #workshop-guide *::before,
+    #workshop-guide *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #workshop-guide {
+      --ink:       #1b2c1f;
+      --ink-soft:  #2e4334;
+      --ink-light: #5a7862;
+      --paper:     #f5f8f4;
+      --cream:     #e8efe5;
+      --rule:      #a4c0a0;
+      --accent:    #3a6b52;
+      --accent-lt: #5a9874;
+      --gold:      #c4941e;
+
+      font-family: 'Source Serif 4', Georgia, serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+      padding: 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ---- Header ---- */
+    #workshop-guide .wg-hero {
+      background-color: var(--ink);
+      color: var(--paper);
+      padding: 3.5rem 3rem 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #workshop-guide .wg-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 28px,
+          rgba(255,255,255,0.04) 28px,
+          rgba(255,255,255,0.04) 29px
+        );
+      pointer-events: none;
+    }
+
+    #workshop-guide .wg-hero-label {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    #workshop-guide .wg-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--paper);
+      margin-bottom: 0.75rem;
+    }
+
+    #workshop-guide .wg-hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    #workshop-guide .wg-hero-sub {
+      font-size: 1rem;
+      color: rgba(245,248,244,0.7);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* ---- Body wrapper ---- */
+    #workshop-guide .wg-body {
+      padding: 2.5rem 3rem;
+    }
+
+    /* ---- Section ---- */
+    #workshop-guide .wg-section {
+      margin-bottom: 3rem;
+    }
+
+    #workshop-guide .wg-section-label {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+
+    #workshop-guide h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      line-height: 1.25;
+    }
+
+    #workshop-guide h2::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin: 0.75rem auto 0;
+    }
+
+    #workshop-guide h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    #workshop-guide p {
+      margin-bottom: 1rem;
+      color: var(--ink-soft);
+    }
+
+    #workshop-guide ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+
+    #workshop-guide ul li {
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative;
+      color: var(--ink-soft);
+    }
+
+    #workshop-guide ul li::before {
+      content: '›';
+      font-size: 1rem;
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+      font-weight: 300;
+    }
+
+    #workshop-guide strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    #workshop-guide em {
+      font-style: italic;
+    }
+
+    /* ---- Rule ---- */
+    #workshop-guide hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ---- Three-question block ---- */
+    #workshop-guide .wg-three-q {
+      background: var(--cream);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    #workshop-guide .wg-three-q p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    #workshop-guide .wg-three-q p:last-child {
+      margin-bottom: 0;
+    }
+
+    #workshop-guide .wg-three-q strong {
+      color: var(--accent);
+    }
+
+    /* ---- Steps ---- */
+    #workshop-guide .wg-steps {
+      counter-reset: steps;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #workshop-guide .wg-steps li {
+      counter-increment: steps;
+      padding: 0.75rem 0 0.75rem 3rem;
+      position: relative;
+      border-bottom: 1px solid var(--cream);
+      color: var(--ink-soft);
+    }
+
+    #workshop-guide .wg-steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      background: var(--accent);
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    /* ---- Glossary table ---- */
+    #workshop-guide .wg-table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    #workshop-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    #workshop-guide thead {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #workshop-guide thead th {
+      padding: 0.75rem 1rem;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-align: left;
+    }
+
+    #workshop-guide tbody tr:nth-child(odd) {
+      background: var(--cream);
+    }
+
+    #workshop-guide tbody tr:nth-child(even) {
+      background: var(--paper);
+    }
+
+    #workshop-guide tbody td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+      vertical-align: top;
+    }
+
+    #workshop-guide tbody td:first-child {
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    #workshop-guide tbody td em {
+      color: var(--ink-light);
+      font-size: 0.9rem;
+    }
+
+    /* ---- Poem cards ---- */
+    #workshop-guide .wg-poem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    #workshop-guide .wg-card {
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--accent);
+      background: white;
+      padding: 1.5rem 1.75rem;
+      transition: box-shadow 0.2s;
+    }
+
+    #workshop-guide .wg-card:hover {
+      box-shadow: 0 4px 18px rgba(27,44,31,0.12);
+    }
+
+    #workshop-guide .wg-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    #workshop-guide .wg-card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    #workshop-guide .wg-card-author {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      font-weight: 400;
+    }
+
+    #workshop-guide .wg-card-year {
+      font-size: 0.8rem;
+      color: var(--rule);
+      font-style: normal;
+    }
+
+    #workshop-guide .wg-card-context {
+      font-size: 0.93rem;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 1rem;
+      padding: 0.6rem 0.9rem;
+      background: var(--paper);
+      border-left: 2px solid var(--gold);
+    }
+
+    #workshop-guide .wg-card h4 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 1rem 0 0.4rem;
+    }
+
+    #workshop-guide .wg-card ul {
+      margin-bottom: 0;
+    }
+
+    #workshop-guide .wg-card ul li {
+      font-size: 0.93rem;
+    }
+
+    #workshop-guide .wg-questions {
+      background: var(--cream);
+      padding: 0.85rem 1rem;
+      margin-top: 0.75rem;
+      border-radius: 2px;
+    }
+
+    #workshop-guide .wg-questions p {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    #workshop-guide .wg-questions p::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent-lt);
+      font-weight: bold;
+    }
+
+    #workshop-guide .wg-questions p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---- Art prompts ---- */
+    #workshop-guide .wg-prompts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    #workshop-guide .wg-prompt-card {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 1.25rem;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    #workshop-guide .wg-prompt-card strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    #workshop-guide .wg-prompt-card p {
+      color: rgba(248,244,238,0.8);
+      font-size: 0.88rem;
+      margin: 0;
+    }
+
+    /* ---- Note box ---- */
+    #workshop-guide .wg-note {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.92rem;
+    }
+
+    #workshop-guide .wg-note strong {
+      color: var(--accent);
+    }
+
+    /* ---- Resources ---- */
+    #workshop-guide .wg-resource-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #workshop-guide .wg-resource-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--cream);
+      font-size: 0.93rem;
+    }
+
+    #workshop-guide .wg-resource-list li::before {
+      content: none;
+    }
+
+    #workshop-guide .wg-resource-list a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    #workshop-guide .wg-resource-list a:hover {
+      text-decoration: underline;
+    }
+
+    #workshop-guide .wg-resource-list .wg-res-note {
+      color: var(--ink-light);
+      font-style: italic;
+    }
+
+    /* ---- Footer ---- */
+    #workshop-guide .wg-footer {
+      background: var(--ink);
+      color: rgba(248,244,238,0.5);
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      padding: 1.25rem 2rem;
+    }
+
+    /* ---- Nav pills ---- */
+    #workshop-guide .wg-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1.25rem 2rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    #workshop-guide .wg-nav a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 0.3rem 0.85rem;
+      border: 1px solid var(--rule);
+      background: white;
+      transition: all 0.15s;
+    }
+
+    #workshop-guide .wg-nav a:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* Animations */
+    @keyframes wg-fade-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #workshop-guide .wg-hero h1,
+    #workshop-guide .wg-hero .wg-hero-label,
+    #workshop-guide .wg-hero .wg-hero-sub {
+      animation: wg-fade-up 0.6s ease both;
+    }
+
+    #workshop-guide .wg-hero .wg-hero-label { animation-delay: 0s; }
+    #workshop-guide .wg-hero h1            { animation-delay: 0.1s; }
+    #workshop-guide .wg-hero .wg-hero-sub  { animation-delay: 0.2s; }
+
+    @media (max-width: 600px) {
+      #workshop-guide .wg-body { padding: 1.75rem 1.25rem; }
+      #workshop-guide .wg-hero { padding: 2.5rem 1.25rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="workshop-guide">
+
+  <!-- HERO -->
+  <header class="wg-hero">
+    <h1><em>Poem to Art</em></h1>
+  </header>
+
+  <!-- NAV -->
+  <nav class="wg-nav" aria-label="Jump to section">
+    <a href="#wg-how-to-read">Reading Tips</a>
+    <a href="#wg-elements">Lit Refresher</a>
+    <a href="#wg-poems">Poem Companions</a>
+  </nav>
+
+  <main class="wg-body">
+
+    <!-- SECTION 1: HOW TO READ -->
+    <section class="wg-section" id="wg-how-to-read">
+      <span class="wg-section-label">Section 1</span>
+      <h2>Reading Tips</h2>
+
+      <p>Don't treat a poem as a puzzle with a single solution! Reading a poem well is not a matter of extracting a meaning the poet hid for you to find. It is a practice of attention: close, unhurried, willing to be surprised. For this project, that attention has a particular direction. We are reading in order to make something, which means we are asking the poem not only what it means, but what it <em>does</em>, and what it might set loose in us.</p>
+      
+      <div class="wg-three-q">
+        <p>As you read each poem, hold these questions alongside the text. Consider them four different angles, each illuminating with distinctive light.</p>
+        <p><strong>What does this poem feel like?</strong> Its emotional temperature, mood, energy.</p>
+        <p><strong>What does this poem show you?</strong> Its images, colors, textures, places.</p>
+        <p><strong>What does this poem resist, grieve, celebrate, or accept?</strong> What the speaker wants.</p>
+        <p><strong>What does this poem notice with pleasure, tenderness, or curiosity?</strong> Even dark poems find something worth looking at closely.</p>
+      </div>
+
+      <h3>Three Steps Through A Poem</h3>
+      <p>Careful readers observe a sort of ritual. Here is one way in.</p>
+      <ol class="wg-steps">
+        <li><strong>Read your poem all the way through once</strong> without stopping to look anything up. A poem will give you something on a first reading that it will not give you again: a first impression, a sound, a feeling before understanding arrives. Trust it. What word or line stays with you?</li>
+        <li><strong>Read it again and mark surprises.</strong> An unexpected word. A shift in mood. A line that lands differently the second time. These are the places where the poem is most alive, working on you in ways it has not yet explained.</li>
+        <li><strong>Ask: who is speaking, and what do they want?</strong> The speaker of a poem is not always the poet, and even when it is, the speaker is a construction, a chosen stance. Every speaker has a need, a fear, an argument, a longing. Your task is to find it.</li>
+      </ol>
+    </section>
+
+    <hr/>
+
+    <!-- SECTION 2: LITERARY ELEMENTS -->
+    <section class="wg-section" id="wg-elements">
+      <span class="wg-section-label">Section 2</span>
+      <h2>Lit Refresher</h2>
+
+      <p>Sorry, but we need to do a little ELA light. The eight terms below give you a shared language for talking about what poems do: not what they mean, but how they make their meanings. This vocabulary is useful, and it is widely used, but it is not neutral: it tends to fit some poems more naturally than others, and there will be moments in these readings where the terms chafe against the poem rather than illuminate it. That friction is worth noticing. A tool that doesn't quite fit is information too.</p>
+
+      <div class="wg-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Speaker</td>
+              <td>The voice narrating the poem (not necessarily the poet themselves)</td>
+            </tr>
+            <tr>
+              <td>Tone</td>
+              <td>The speaker's attitude toward the subject: how the poem "sounds" emotionally</td>
+            </tr>
+            <tr>
+              <td>Imagery</td>
+              <td>Language that appeals to the senses: sight, sound, touch, smell, taste</td>
+            </tr>
+            <tr>
+              <td>Symbol</td>
+              <td>An image or object that carries meaning beyond itself</td>
+            </tr>
+            <tr>
+              <td>Extended Metaphor</td>
+              <td>A single comparison sustained across many lines or the whole poem</td>
+            </tr>
+            <tr>
+              <td>Repetition / Anaphora</td>
+              <td>Words or phrases repeated for emphasis; <em>anaphora</em> repeats at the start of lines</td>
+            </tr>
+            <tr>
+              <td>Personification</td>
+              <td>Giving human qualities to abstract concepts or non-human things</td>
+            </tr>
+            <tr>
+              <td>Theme</td>
+              <td>The central idea or insight the poem develops: not a single word, but a statement about human experience. "Resilience persists through trauma" is a theme; "resilience" alone is a topic.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr/>
+
+    <!-- SECTION 3: THE POEMS -->
+    <section class="wg-section" id="wg-poems">
+      <span class="wg-section-label">Section 3</span>
+      <h2>Poem Companions</h2>
+      <p>This is not an exhaustive guide; it's more of a companion. Each note serves as orientation. It provides a little context, highlights a few features worth watching for, and poses some questions to sit with rather than answer quickly. The poems do not need our help to be interesting. They have outlasted their authors, and in some cases their eras, because something in them continues to press against readers. Your job is to feel where the pressure is.</p>
+
+      <div class="wg-poem-grid">
+
+        <!-- Card 1 -->
+        <div class="wg-card">
+          <div class="wg-card-meta">
+            <span class="wg-card-title">"Still I Rise"</span>
+            <span class="wg-card-author">Maya Angelou</span>
+            <span class="wg-card-year">1978</span>
+          </div>
+          <p class="wg-card-context">Angelou wrote this poem in 1978, during the period of sustained creative power that followed <strong>I Know Why the Caged Bird Sings</strong>. The poem reaches back through generations of Black American history (slavery, humiliation, survival) and transforms that inheritance into something triumphant rather than merely endured. It is also one of the most frequently anthologized and assigned poems in American schools, which is itself a fact worth pausing over. There are poems that survive their authors, and poems that survive their eras, and rarer still are poems that survive being required reading. Whether "Still I Rise" is one of them is a question the poem itself might have something to say about.</p>
+          <h4>Key Elements</h4>
+          <ul>
+            <li><strong>Anaphora:</strong> Notice how a phrase returns and accumulates across the poem</li>
+            <li><strong>Tone:</strong> Does the speaker's attitude stay the same from beginning to end?</li>
+            <li><strong>Imagery:</strong> What physical world does the poem conjure? What does the body do here?</li>
+            <li><strong>Theme:</strong> Who is the "I" speaking: an individual, or something larger?</li>
+          </ul>
+          <h4>Questions for Discussion</h4>
+          <div class="wg-questions">
+            <p>Where, if anywhere, does the poem's mood shift? What causes the shift?</p>
+            <p>Who is the speaker addressing? How does knowing the audience change how you read the poem?</p>
+            <p>This poem is frequently assigned in schools. Does knowing that change how you encounter it? What might a poem lose, or gain, when it becomes required reading?</p>
+            <p>Which image in the poem is most surprising to you, and why?</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="wg-card">
+          <div class="wg-card-meta">
+            <span class="wg-card-title">"Do Not Go Gentle into That Good Night"</span>
+            <span class="wg-card-author">Dylan Thomas</span>
+            <span class="wg-card-year">1951</span>
+          </div>
+          <p class="wg-card-context">Thomas wrote this poem around 1947, while visiting Florence with his family, and sent it to the journal <em>Botteghe Oscure</em>, where it was published in 1951. His father, to whom the poem was addressed, died in December 1952. It is a <em>villanelle</em>, a form whose fixed structure derives from a single late-sixteenth-century French poem by Jean Passerat, though that structure was only codified as a recognized form in the nineteenth century. Two refrains return and return throughout the poem, arriving together in the final stanza. There is something deeply intentional about writing a poem against surrender in a form that permits almost no freedom. Grief, Thomas seems to suggest, sometimes demands structure more than it demands expression. The rigid container, in his hands, becomes an act of love.</p>
+          <h4>Key Elements</h4>
+          <ul>
+            <li><strong>Form (Villanelle):</strong> Two lines repeat and return throughout. Do they mean the same thing each time?</li>
+            <li><strong>Symbol:</strong> What does night represent? What does light represent? How does the poem use them?</li>
+            <li><strong>Tone:</strong> The speaker is giving a command. To whom? With what feeling?</li>
+            <li><strong>Personification:</strong> What is death made into here? How does that shape the poem's argument?</li>
+          </ul>
+          <h4>Questions for Discussion</h4>
+          <div class="wg-questions">
+            <p>The poem catalogs different types of men: wise, good, wild, grave. What do they share? Why include so many?</p>
+            <p>The form is very strict and controlled. Does that feel right for this subject, or does it create tension?</p>
+            <p>Is the speaker's demand realistic? What does it tell us about grief?</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="wg-card">
+          <div class="wg-card-meta">
+            <span class="wg-card-title">"Annabel Lee"</span>
+            <span class="wg-card-author">Edgar Allan Poe</span>
+            <span class="wg-card-year">1849</span>
+          </div>
+          <p class="wg-card-context">Poe wrote this poem in the last months of his life; it appeared in print two days after his death in 1849, under circumstances that remain mysterious. He described the death of a beautiful woman as "the most poetical topic in the world" — which tells you something about his preoccupations, and perhaps something about his era's. "Annabel Lee" reads on its surface as a pure love poem, musical and aching. But the speaker's devotion does not diminish as the poem progresses; it intensifies into something harder to name. Poe understood that love and obsession are not opposites. He understood that the border between them is the most interesting place a poem can stand.</p>
+          <h4>Key Elements</h4>
+          <ul>
+            <li><strong>Sound / Musicality:</strong> Read it aloud. How does the rhyme scheme and repetition affect your experience of the poem?</li>
+            <li><strong>Imagery:</strong> What kind of place is this kingdom? What words describe it physically?</li>
+            <li><strong>Tone:</strong> The speaker sounds devoted. Read carefully: does anything give you pause?</li>
+            <li><strong>Theme:</strong> Is this a poem about love, grief, obsession, or all three? Where do those overlap?</li>
+          </ul>
+          <h4>Questions for Discussion</h4>
+          <div class="wg-questions">
+            <p>The poem ends with a surprising image. What is the speaker doing? How does it make you feel about him?</p>
+            <p>The angels and demons appear as rivals. What does that suggest about the speaker's state of mind?</p>
+            <p>Is there a difference between love and the refusal to accept loss? Does this poem help you think about that?</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="wg-card">
+          <div class="wg-card-meta">
+            <span class="wg-card-title">"The Road Not Taken"</span>
+            <span class="wg-card-author">Robert Frost</span>
+            <span class="wg-card-year">1916</span>
+          </div>
+          <p class="wg-card-context">Few poems in the English language have been more confidently misunderstood than this one. "The Road Not Taken" is routinely read as a celebration of courageous individualism — the lone figure who chose the less-traveled path and was made, by that choice, extraordinary. Frost intended no such thing. The poem was written in 1915 as a private joke about his friend Edward Thomas, who was chronically indecisive about which path to take on their walks together and would invariably lament afterward that they should have chosen the other one. When Frost first read the poem to an audience of college students, they took it entirely seriously; he wrote to Thomas that he had tried his best to signal he was "fooling" and had failed — "Mea culpa." Thomas, meanwhile, missed the joke entirely, taking the poem as a personal remark about his own indecision — a reading that, according to Thomas's biographer Matthew Hollis, provided the last straw in his decision to enlist. He was killed at the Battle of Arras in 1917. Read the poem's actual language: both roads, Frost tells us, were "really about the same." What the poem is truly about is something more unsettling and more universal: the stories we tell ourselves about our choices, long after the choosing is done, and the small dishonesty at the heart of every autobiography.</p>
+          <h4>Key Elements</h4>
+          <ul>
+            <li><strong>Symbol:</strong> A forking path is the central image, but read the description of the paths carefully before deciding what they represent</li>
+            <li><strong>Irony:</strong> The speaker predicts how they will tell this story someday. What does that prediction suggest?</li>
+            <li><strong>Tone:</strong> Is this speaker confident, wistful, self-aware, or something else?</li>
+            <li><strong>Theme:</strong> What is this poem actually about? (Read the description of both roads again before answering.)</li>
+          </ul>
+          <h4>Questions for Discussion</h4>
+          <div class="wg-questions">
+            <p>How does Frost describe the two roads? Are they as different as the poem's reputation suggests?</p>
+            <p>The speaker uses the word "sigh": is it a sigh of regret, contentment, or something harder to name?</p>
+            <p>Why might this poem be so often misread? What do people want it to mean?</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="wg-card">
+          <div class="wg-card-meta">
+            <span class="wg-card-title">"Because I Could Not Stop for Death"</span>
+            <span class="wg-card-author">Emily Dickinson</span>
+            <span class="wg-card-year">c. 1863 (pub. 1890)</span>
+          </div>
+          <p class="wg-card-context">Emily Dickinson spent much of her life within the walls of her family home in Amherst, Massachusetts, and published only ten poems before her death in 1886 — all anonymously, and none with her authorization. The nearly eighteen hundred poems found in her desk afterward, written in her distinctive hand, sewn into small fascicles, left without formal titles, constitute one of the most extraordinary private literary acts in American history. She returned to death as a subject constantly, not out of morbidity but out of the same philosophical courage that drove the great Stoics: she wanted to look at it clearly, without flinching, and see what it really was. In this poem she finds, improbably, that it is a gentleman with a carriage. The calm that follows from that discovery is not denial. It may be the most radical thing in the poem.</p>
+          <h4>Key Elements</h4>
+          <ul>
+            <li><strong>Extended Metaphor:</strong> Death appears as a specific kind of person doing a specific thing. What are the implications of that choice?</li>
+            <li><strong>Structure:</strong> The poem moves through a sequence of places and scenes. Map them. What pattern do you notice?</li>
+            <li><strong>Tone:</strong> The speaker describes dying without apparent fear. How does that affect your reading?</li>
+            <li><strong>Imagery:</strong> Several physical details (the dress, the cold, the house) anchor an abstract experience. What do they contribute?</li>
+          </ul>
+          <h4>Questions for Discussion</h4>
+          <div class="wg-questions">
+            <p>The speaker uses the past tense throughout: where is she speaking from? Does the poem tell you?</p>
+            <p>The carriage holds Death, the speaker, and "Immortality." Why three passengers?</p>
+            <p>What feeling does this poem leave you with? Does "calm" fully describe it?</p>
+          </div>
+        </div>
+
+      </div><!-- end poem grid -->
+    </section>
+
+
+  </main>
+
+
+
+</div><!-- end #workshop-guide -->
+
+</body>
+</html>
